@@ -33,6 +33,7 @@ import com.example.android.uamp.media.extensions.id
 import com.example.android.uamp.media.extensions.isPlayEnabled
 import com.example.android.uamp.media.extensions.isPlaying
 import com.example.android.uamp.media.extensions.isPrepared
+import com.example.android.uamp.media.extensions.currentPlayBackPosition
 import com.example.android.uamp.utils.Event
 
 /**
@@ -156,6 +157,22 @@ class MainActivityViewModel(
             }
         } else {
             transportControls.playFromMediaId(mediaId, null)
+        }
+    }
+
+    fun seek() {
+        val transportControls = musicServiceConnection.transportControls
+
+        val currentPlaybackPosition = musicServiceConnection.playbackState.value?.currentPlayBackPosition
+                ?: 0
+
+        val isPrepared = musicServiceConnection.playbackState.value?.isPrepared ?: false
+        if (isPrepared) {
+            musicServiceConnection.playbackState.value?.let { playbackState ->
+                when {
+                    playbackState.isPlaying -> transportControls.seekTo(currentPlaybackPosition + (30*1000))
+                }
+            }
         }
     }
 

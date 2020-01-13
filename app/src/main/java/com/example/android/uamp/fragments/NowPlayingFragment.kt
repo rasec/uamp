@@ -78,6 +78,9 @@ class NowPlayingFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.media_button).setOnClickListener {
             nowPlayingViewModel.mediaMetadata.value?.let { mainActivityViewModel.playMediaId(it.id) } }
 
+        view.findViewById<ImageButton>(R.id.media_button2).setOnClickListener {
+            nowPlayingViewModel.mediaMetadata.value?.let { mainActivityViewModel.seek() } }
+
         // Initialize playback duration and position to zero
         view.findViewById<TextView>(R.id.duration).text =
                 NowPlayingMetadata.timestampToMSS(context, 0L)

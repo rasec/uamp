@@ -57,6 +57,18 @@
         app:srcCompat="@drawable/ic_play_arrow_black_24dp"
         tools:ignore="ContentDescription" />
 
+    <ImageButton
+        android:id="@+id/media_button2"
+        android:layout_width="@dimen/exo_media_button_width"
+        android:layout_height="@dimen/exo_media_button_height"
+        android:layout_marginLeft="248dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerInside"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:srcCompat="@drawable/ic_play_arrow_black_24dp"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
