@@ -176,6 +176,26 @@ class MainActivityViewModel(
         }
     }
 
+    fun seekBack() {
+        val transportControls = musicServiceConnection.transportControls
+
+        val currentPlaybackPosition = musicServiceConnection.playbackState.value?.currentPlayBackPosition
+                ?: 0
+        var positionToMoveTo = currentPlaybackPosition - (10*1000)
+        when {
+            positionToMoveTo < 0 -> positionToMoveTo = 0
+        }
+
+        val isPrepared = musicServiceConnection.playbackState.value?.isPrepared ?: false
+        if (isPrepared) {
+            musicServiceConnection.playbackState.value?.let { playbackState ->
+                when {
+                    playbackState.isPlaying -> transportControls.seekTo(positionToMoveTo)
+                }
+            }
+        }
+    }
+
     class Factory(
         private val musicServiceConnection: MusicServiceConnection
     ) : ViewModelProvider.NewInstanceFactory() {

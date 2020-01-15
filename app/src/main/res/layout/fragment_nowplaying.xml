@@ -14,8 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -27,9 +26,9 @@
         android:id="@+id/albumArt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/album_art_alt"
-        app:srcCompat="@android:color/transparent"/>
+        android:scaleType="centerCrop"
+        app:srcCompat="@android:color/transparent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/divider"
@@ -47,41 +46,48 @@
         app:layout_constraintTop_toBottomOf="@id/divider" />
 
     <ImageButton
-        android:id="@+id/media_button"
-        android:layout_width="@dimen/exo_media_button_width"
+        android:id="@+id/media_backward_button"
+        android:layout_width="40dp"
         android:layout_height="@dimen/exo_media_button_height"
         android:background="?attr/selectableItemBackground"
         android:scaleType="centerInside"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:srcCompat="@drawable/backward_button"
+        tools:ignore="ContentDescription" />
+
+    <ImageButton
+        android:id="@+id/media_button"
+        android:layout_width="40dp"
+        android:layout_height="@dimen/exo_media_button_height"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerInside"
+        app:layout_constraintLeft_toRightOf="@id/media_backward_button"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:srcCompat="@drawable/ic_play_arrow_black_24dp"
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/media_button2"
-        android:layout_width="@dimen/exo_media_button_width"
+        android:id="@+id/media_forward_button"
+        android:layout_width="40dp"
         android:layout_height="@dimen/exo_media_button_height"
-        android:layout_marginLeft="248dp"
         android:background="?attr/selectableItemBackground"
         android:scaleType="centerInside"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/media_button"
         app:layout_constraintTop_toBottomOf="@id/divider"
-        app:srcCompat="@drawable/ic_play_arrow_black_24dp"
+        app:srcCompat="@drawable/forward_button"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="@dimen/text_margin"
-        android:layout_marginEnd="@dimen/text_margin"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.Uamp.Title"
+        app:layout_constraintLeft_toRightOf="@id/media_forward_button"
         app:layout_constraintTop_toBottomOf="@id/divider"
-        app:layout_constraintLeft_toRightOf="@id/media_button"
-        app:layout_constraintRight_toLeftOf="@id/position"
         tools:text="Song Title" />
 
     <TextView
@@ -93,23 +99,22 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.Uamp.Subtitle"
+        app:layout_constraintLeft_toRightOf="@id/media_forward_button"
         app:layout_constraintTop_toBottomOf="@+id/title"
-        app:layout_constraintLeft_toRightOf="@id/media_button"
-        app:layout_constraintRight_toLeftOf="@id/position"
         tools:text="Artist" />
 
     <TextView
         android:id="@+id/position"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/text_margin"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.Uamp.Title"
-        app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
         tools:text="0:00" />
 
     <TextView
@@ -121,8 +126,8 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.Uamp.Subtitle"
-        app:layout_constraintTop_toBottomOf="@id/position"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/position"
         tools:text="0:00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

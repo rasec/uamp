@@ -78,8 +78,10 @@ class NowPlayingFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.media_button).setOnClickListener {
             nowPlayingViewModel.mediaMetadata.value?.let { mainActivityViewModel.playMediaId(it.id) } }
 
-        view.findViewById<ImageButton>(R.id.media_button2).setOnClickListener {
+        view.findViewById<ImageButton>(R.id.media_forward_button).setOnClickListener {
             nowPlayingViewModel.mediaMetadata.value?.let { mainActivityViewModel.seek() } }
+        view.findViewById<ImageButton>(R.id.media_backward_button).setOnClickListener {
+            nowPlayingViewModel.mediaMetadata.value?.let { mainActivityViewModel.seekBack() } }
 
         // Initialize playback duration and position to zero
         view.findViewById<TextView>(R.id.duration).text =
